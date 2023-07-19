@@ -1,7 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { Image, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {useFonts, Roboto_500Medium} from "@expo-google-fonts/roboto"
+
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    'roboto-medium': Roboto_500Medium
+  })
+  if( !fontsLoaded){
+    return null
+  }
   return (
     <SafeAreaView style={styles.container}>
     
@@ -28,8 +36,8 @@ const styles = StyleSheet.create({
     objectFit: 'contain'
   },
   logoText: {
+    fontFamily: 'roboto-medium',
     fontSize: 24,
-    fontWeight: 500,
     color: "#fff",
     marginTop: 18
   }
