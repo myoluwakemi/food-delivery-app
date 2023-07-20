@@ -1,44 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import {useFonts, Roboto_500Medium} from "@expo-google-fonts/roboto"
+import { useCallback } from 'react'
+import * as SplashScreen from 'expo-splash-screen';
+import {SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { useFonts, Roboto_500Medium , Roboto_400Regular ,Roboto_700Bold} from "@expo-google-fonts/roboto"
+import LandingPage from './screens/LandingPage';
 
+SplashScreen.preventAutoHideAsync()
 
 export default function App() {
   let [fontsLoaded] = useFonts({
-    'roboto-medium': Roboto_500Medium
+    'roboto-medium': Roboto_500Medium,
+    'roboto-bold': Roboto_700Bold,
+    'roboto-small': Roboto_400Regular
   })
-  if( !fontsLoaded){
-    return null
+
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
   }
+
   return (
-    <SafeAreaView style={styles.container}>
-    
-    <View style={styles.container}>
-      <Image style={styles.landingLogo} source={require('./assets/images/landingLogo.png')}/>
-      <Text style={styles.logoText}>OSHYNE FOODS</Text>
-      <StatusBar style="auto" />
+    <View onLayout={onLayoutRootView} style=
+      {styles.container} >
+    <LandingPage/>
     </View>
-    </SafeAreaView>
-   
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#FF5F04',
-    alignItems: 'center',
-    justifyContent: 'center',
+   paddingHorizontal: 18,
+   marginTop: 150,
+   display: 'flex',
+   justifyContent: 'center'
+   
   },
-  landingLogo: {
-    width: 100,
-    height: 100,
-    objectFit: 'contain'
-  },
-  logoText: {
-    fontFamily: 'roboto-medium',
-    fontSize: 24,
-    color: "#fff",
-    marginTop: 18
-  }
+ 
 });
