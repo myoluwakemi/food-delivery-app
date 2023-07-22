@@ -1,5 +1,5 @@
-import { View,  Text, StyleSheet, Image, Dimensions} from "react-native"
-const LandingPage =() => {
+import { View,  Text, StyleSheet, Image, Button} from "react-native"
+const LandingPage =({navigation}) => {
     return(
         <View style={styles.container}>
         <View style={styles.inneerContainer} >
@@ -12,7 +12,7 @@ const LandingPage =() => {
 
             </View>
             </View>
-            
+            <Button title="goto" onPress={()=> navigation.navigate('Register')}/>
 
         </View>
         
@@ -20,7 +20,7 @@ const LandingPage =() => {
     )
 }
 export default LandingPage
-const windowWidth= Dimensions.get('window').width
+// const windowWidth= Dimensions.get('window').width
 
 const styles = StyleSheet.create({
     container: {
@@ -28,8 +28,6 @@ const styles = StyleSheet.create({
 
     },
     inneerContainer : {
-      
-
          justifyContent: 'center',
          alignContent: 'center'
 
