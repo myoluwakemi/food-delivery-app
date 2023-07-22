@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Image, Button } from "react-native"
+import PrimaryButton from "../components/PrimaryButton"
 const LandingPage = ({ navigation }) => {
     return (
         <View style={styles.container}>
@@ -12,8 +13,8 @@ const LandingPage = ({ navigation }) => {
 
                 </View>
             </View>
-            <Button title="goto" onPress={() => navigation.navigate('Register')} />
-
+            <PrimaryButton onPressed={() => navigation.navigate('Register')} buttnText='Get Started'/>
+           
         </View>
 
 
@@ -62,8 +63,6 @@ const styles = StyleSheet.create({
         color: '#000',
         marginTop: 12,
         fontFamily: 'roboto-small'
-
-
     },
     textContainer: {
         display: 'flex',
