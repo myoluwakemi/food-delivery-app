@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-       paddingVertical: 18
+       paddingVertical: 18,
+       width: '100%'
     },
     buttonText: {
         color: '#fff',
